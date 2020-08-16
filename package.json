@@ -1,0 +1,87 @@
+{
+  "name": "companies-twitter",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8082",
+  "scripts": {
+    "prestart": "echo -e \"⛳️  Running Koa Client-Server Application -\\033[1m Development \\033[0m\"",
+    "start": "concurrently 'yarn run start:client' 'yarn run start:server'",
+    "prestart:prod": "echo -e \"⛳️  Running Koa Client-Server Application -\\033[1m Production \\033[0m\"",
+    "start:prod": "concurrently 'yarn run build:client' 'yarn run start:server-prod'",
+    "start:client": "react-app-rewired start",
+    "build:client": "react-app-rewired build",
+    "build": "concurrently 'yarn run build:client' 'yarn run build:server'",
+    "test": "react-app-rewired test",
+    "build:server": "rimraf ./server/dist && TS_NODE_PROJECT=\"./server/tsconfig.json\" webpack --config ./server/webpack.config.ts",
+    "build:server-watch": "rimraf ./server/dist && NODE_ENV=development TS_NODE_PROJECT=\"./server/tsconfig.json\" webpack --config ./server/webpack.config.ts --watch",
+    "start:server-prod": "concurrently 'yarn run build:server' 'wait-on ./server/dist/server.bundle.js && node ./server/dist/server.bundle.js'",
+    "prestart:server": "echo '📦   Bundling server & running'",
+    "start:server": "concurrently 'yarn run build:server-watch' 'wait-on ./server/dist/server.bundle.js && DEBUG=koa* NODE_DEBUG=request nodemon ./server/dist/server.bundle.js'"
+  },
+  "dependencies": {
+    "@mollycule/lattice": "^1.0.4",
+    "@mollycule/react-anime": "^0.0.7",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/animejs": "^3.1.1",
+    "@types/jest": "^24.0.0",
+    "@types/koa": "^2.11.3",
+    "@types/koa-router": "^7.4.1",
+    "@types/lokijs": "^1.5.3",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/react-transition-group": "^4.4.0",
+    "animejs": "^3.2.0",
+    "chalk": "^4.1.0",
+    "customize-cra": "^1.0.0",
+    "figlet": "^1.5.0",
+    "koa": "^2.13.0",
+    "koa-body": "^4.2.0",
+    "koa-cookie": "^1.0.0",
+    "koa-morgan": "^1.0.1",
+    "koa-router": "^9.4.0",
+    "koa-static": "^5.0.0",
+    "koa-useragent": "^4.0.0",
+    "lokijs": "^1.5.10",
+    "path": "^0.12.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^3.4.3",
+    "react-transition-group": "^4.4.1",
+    "typescript": "~3.7.2",
+    "winston": "^3.3.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/webpack": "^4.41.21",
+    "@types/webpack-env": "^1.15.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.3.0",
+    "node-sass": "^4.14.1",
+    "nodemon": "^2.0.4",
+    "react-app-rewired": "^2.1.6",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^8.0.2",
+    "ts-node": "^8.10.2",
+    "wait-on": "^5.2.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
