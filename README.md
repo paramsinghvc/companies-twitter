@@ -1,18 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Demo: https://radiant-peak-55242.herokuapp.com/
-
-![Detail@Desktop](https://user-images.githubusercontent.com/4329912/90422303-9792c400-e0b2-11ea-9706-0aa2e617dad4.png)
-![Detail@Mobile](https://user-images.githubusercontent.com/4329912/90422312-99f51e00-e0b2-11ea-8eca-c7004827f6fe.png)
-![Listing@Mobile](https://user-images.githubusercontent.com/4329912/90422313-9a8db480-e0b2-11ea-8355-2668ee1074db.png)
-<img width="1672" src="https://user-images.githubusercontent.com/4329912/90422314-9b264b00-e0b2-11ea-9b3d-3e37d7dfdbf9.png">
+#### Demo: https://radiant-peak-55242.herokuapp.com/
 
 ## Steps
 
 - Clone the repository
   `git clone https://github.com/paramsinghvc/companies-twitter.git`
-- Make sure to have NodeJS installed in your system.
-- Run `npm install`
+- Make sure to have [NodeJS](https://nodejs.org/en/download/) installed in your system.
+- Install Yarn (Optional) - `npm install -g yarn`
+- In the root of project, run `npm install` or `yarn install`
 
 ## Running using Docker
 
@@ -34,3 +30,10 @@ Runs node server on localhost:8082 and the ui webpack dev server proxies all the
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+#### Screenshots:
+
+![Detail@Desktop](https://user-images.githubusercontent.com/4329912/90422303-9792c400-e0b2-11ea-9706-0aa2e617dad4.png)
+![Detail@Mobile](https://user-images.githubusercontent.com/4329912/90422312-99f51e00-e0b2-11ea-8eca-c7004827f6fe.png)
+![Listing@Mobile](https://user-images.githubusercontent.com/4329912/90422313-9a8db480-e0b2-11ea-8355-2668ee1074db.png)
+<img width="1672" src="https://user-images.githubusercontent.com/4329912/90422314-9b264b00-e0b2-11ea-9b3d-3e37d7dfdbf9.png">
