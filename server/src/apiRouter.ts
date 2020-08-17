@@ -1,5 +1,8 @@
 import Router, { IMiddleware, RouterContext } from "koa-router";
+import request from "request-promise-native";
+
 import { initDB, companies } from "./shared/db";
+import { logger } from "./logger";
 
 const PAGE_SIZE = 10;
 
@@ -56,6 +59,30 @@ const routesConfig: Array<RouteConfig> = [
     path: "/company/:companyName",
     handler(ctx: RouterContext<{}, { companyName: string }>) {
       ctx.body = companies.findOne({ name: { $eq: ctx.params.companyName } });
+    },
+  },
+  {
+    method: HttpVerb.GET,
+    path: "/twitter/details/:companyName",
+    async handler(ctx: RouterContext<{}, { companyName: string }>) {
+      const { request: req, response: res } = ctx;
+      console.log(ctx.querystring, req.headers);
+      try {
+        const response = await request(
+          `https://api.twitter.com/2/users/by/username/${ctx.params.companyName}?${ctx.querystring}`,
+          {
+            headers: { authorization: req.headers.authorization },
+            strictSSL: false,
+            resolveWithFullResponse: true,
+          }
+        );
+
+        ctx.body = response.body;
+        ctx.status = response.statusCode;
+      } catch (e) {
+        ctx.status = e.statusCode;
+        logger.error(e);
+      }
     },
   },
 ];

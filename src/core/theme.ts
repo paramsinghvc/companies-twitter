@@ -7,6 +7,7 @@ export const theme = {
     secondary: "#E76F51",
     borderColor: "#708090",
     subText: "#708090",
+    bg: "#fafafa",
   },
   radii: {
     small: "2px",

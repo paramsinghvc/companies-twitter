@@ -41,10 +41,11 @@ const CompanyDetails: FC = () => {
     <Grid cols={12} mx="10vw">
       <Cell pt="50px" justifySelf="start">
         <Box
-          backgroundColor="#fafafa"
+          backgroundColor="bg"
           p="20px"
           borderRadius="50%"
           role="button"
+          style={{ cursor: "pointer" }}
         >
           <BackSVG height="30px" onClick={handleBackClick} />
         </Box>

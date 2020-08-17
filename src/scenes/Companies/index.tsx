@@ -21,6 +21,26 @@ const Input = styled(Box)`
   outline: none;
 `;
 
+const LoadMoreBtn = styled(Cell).attrs(({ theme }) => ({
+  border: "2px solid",
+  borderRadius: "50%",
+  borderColor: "primary",
+  justifySelf: "center",
+  height: "100px",
+  width: "100px",
+  lineHeight: "100px",
+  textAlign: "center",
+  fontSize: "12px",
+  fontWeight: "bold",
+  color: "primary",
+}))`
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: white;
+  }
+`;
+
 const Companies: FC = () => {
   const {
     isLoading,
@@ -68,21 +88,32 @@ const Companies: FC = () => {
         ) : error ? (
           <Holder>Error occured</Holder>
         ) : companiesData.length > 0 ? (
-          <Grid cols={{ xs: 1, sm: 2, md: 3, lg: 4 }} gap="20px">
-            <PerformAnime
-              perform
-              duration={100}
-              onPerform={{
-                translateY: [50, 0],
-                opacity: [0, 1],
-                delay: animejs.stagger(60),
-                easing: "linear",
-              }}
+          <Grid rowGap="70px">
+            <Grid cols={{ xs: 1, sm: 2, md: 3, lg: 4 }} gap="20px">
+              <PerformAnime
+                perform
+                duration={100}
+                onPerform={{
+                  translateY: [50, 0],
+                  opacity: [0, 1],
+                  delay: animejs.stagger(60),
+                  easing: "linear",
+                }}
+              >
+                {companiesData.map((company: Company, idx: number) => (
+                  <CompanyItem key={idx} company={company} />
+                ))}
+              </PerformAnime>
+            </Grid>
+            <LoadMoreBtn
+              onClick={
+                searchText
+                  ? () => fetchNextCompaniesForQuery(searchText)
+                  : fetchNextPageData
+              }
             >
-              {companiesData.map((company: Company, idx: number) => (
-                <CompanyItem key={idx} company={company} />
-              ))}
-            </PerformAnime>
+              LOAD MORE
+            </LoadMoreBtn>
           </Grid>
         ) : (
           <Holder as="p" fontSize="24px" color="subText">

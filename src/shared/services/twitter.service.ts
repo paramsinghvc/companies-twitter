@@ -56,7 +56,8 @@ export function getProfileUrl(url = "") {
 
 export async function fetchUserOrCompanyDetails(userName: string) {
   return await makeRequest(
-    `https://cors-anywhere.herokuapp.com/https://api.twitter.com/2/users/by/username/${userName}`,
+    // `https://cors-anywhere.herokuapp.com/https://api.twitter.com/2/users/by/username/${userName}`,
+    `/api/twitter/details/${userName}`,
     REQUEST_METHOD.GET,
     {
       queryParams: {
