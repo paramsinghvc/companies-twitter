@@ -134,18 +134,20 @@ export enum REQUEST_METHOD {
   "DELETE" = "delete",
 }
 
-export const getMethod = (method: REQUEST_METHOD) => {
+export const getMethod = (_fetchServiceInstance: FetchService) => (
+  method: REQUEST_METHOD
+) => {
   switch (method) {
     case REQUEST_METHOD.GET:
-      return fetchServiceInstance.get;
+      return _fetchServiceInstance.get;
     case REQUEST_METHOD.POST:
-      return fetchServiceInstance.post;
+      return _fetchServiceInstance.post;
     case REQUEST_METHOD.PUT:
-      return fetchServiceInstance.put;
+      return _fetchServiceInstance.put;
     case REQUEST_METHOD.PATCH:
-      return fetchServiceInstance.patch;
+      return _fetchServiceInstance.patch;
     case REQUEST_METHOD.DELETE:
-      return fetchServiceInstance.delete;
+      return _fetchServiceInstance.delete;
   }
 };
 
@@ -158,9 +160,12 @@ export const getMethod = (method: REQUEST_METHOD) => {
 export const makeRequest = (
   url: string,
   requestMethod: REQUEST_METHOD,
-  options: IRequestOptions
+  options: IRequestOptions,
+  _fetchServiceInstance?: FetchService
 ): Promise<{ response?: any; error?: any }> => {
-  return getMethod(requestMethod)(url, options)
+  return getMethod(_fetchServiceInstance || fetchServiceInstance)(
+    requestMethod
+  )(url, options)
     .then((response: Response) => response.json())
     .then((response: Response) => ({ response }))
     .catch((error: any) => ({ error }));

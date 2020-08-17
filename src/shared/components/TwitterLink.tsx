@@ -1,9 +1,6 @@
 import React, { FC, AnchorHTMLAttributes, useMemo } from "react";
 import Anchor from "./Anchor";
-
-function getHandleFromUrl(url: string) {
-  return url.match(/[^\/]+$/g)?.[0] ?? "";
-}
+import { getHandleFromUrl } from "shared/services/twitter.service";
 
 const TwitterLink: FC<
   { url: string } & AnchorHTMLAttributes<HTMLAnchorElement>

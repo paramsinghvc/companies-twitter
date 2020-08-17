@@ -38,6 +38,7 @@
     "chalk": "^4.1.0",
     "customize-cra": "^1.0.0",
     "figlet": "^1.5.0",
+    "isomorphic-fetch": "^2.2.1",
     "koa": "^2.13.0",
     "koa-body": "^4.2.0",
     "koa-cookie": "^1.0.0",
