@@ -4,9 +4,10 @@ import styled from "styled-components";
 import { PerformAnime } from "@mollycule/react-anime";
 import animejs from "animejs";
 
-import { useCompanies, Company } from "./hooks";
+import { useCompanies } from "./hooks";
 import Spinner from "shared/components/Spinner";
 import CompanyItem from "./components/CompanyItem";
+import { Company } from "shared/types";
 
 const Heading = Box.withComponent("h2");
 const Holder = styled(Box).attrs(() => ({
@@ -46,7 +47,6 @@ const Companies: FC = () => {
     isLoading,
     error,
     companiesData,
-    fetchCompanies,
     fetchNextPageData,
     fetchCompaniesForQuery,
     fetchNextCompaniesForQuery,
@@ -60,7 +60,7 @@ const Companies: FC = () => {
       setSearchText(value);
       fetchCompaniesForQuery(value);
     },
-    []
+    [setSearchText, fetchCompaniesForQuery]
   );
 
   return (

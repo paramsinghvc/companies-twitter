@@ -1,44 +1,36 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Demo: https://radiant-peak-55242.herokuapp.com/
+
+![Detail@Desktop](https://user-images.githubusercontent.com/4329912/90422303-9792c400-e0b2-11ea-9706-0aa2e617dad4.png)
+![Detail@Mobile](https://user-images.githubusercontent.com/4329912/90422312-99f51e00-e0b2-11ea-8eca-c7004827f6fe.png)
+![Listing@Mobile](https://user-images.githubusercontent.com/4329912/90422313-9a8db480-e0b2-11ea-8355-2668ee1074db.png)
+<img width="1672" src="https://user-images.githubusercontent.com/4329912/90422314-9b264b00-e0b2-11ea-9b3d-3e37d7dfdbf9.png">
+
+## Steps
+
+- Clone the repository
+  `git clone https://github.com/paramsinghvc/companies-twitter.git`
+- Make sure to have NodeJS installed in your system.
+- Run `npm install`
+
+## Running using Docker
+
+```
+docker-compose up
+```
+
+It'll start the whole app on localhost:8082
+
+## Running using Yarn or NPM
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn start` or `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs node server on localhost:8082 and the ui webpack dev server proxies all the `/api` requests towards it.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

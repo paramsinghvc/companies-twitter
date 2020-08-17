@@ -66,7 +66,6 @@ const routesConfig: Array<RouteConfig> = [
     path: "/twitter/details/:companyName",
     async handler(ctx: RouterContext<{}, { companyName: string }>) {
       const { request: req, response: res } = ctx;
-      console.log(ctx.querystring, req.headers);
       try {
         const response = await request(
           `https://api.twitter.com/2/users/by/username/${ctx.params.companyName}?${ctx.querystring}`,

@@ -1,7 +1,6 @@
 import { FetchService, makeRequest, REQUEST_METHOD } from "./fetch.service";
+import { TWITTER_BEARER_TOKEN } from "shared/config";
 
-const TWITTER_BEARER_TOKEN =
-  "AAAAAAAAAAAAAAAAAAAAAHNUGwEAAAAAah3Zd%2Bse0T%2BYFAjTvxe4XJNWhmo%3DYUQYK9SXHXm1bGTl6iw50W42CMIt71Aor0RP60553G3zlBRDBY";
 const fetchServiceTwitterInstance = new FetchService();
 
 fetchServiceTwitterInstance.setHeader(
@@ -45,7 +44,7 @@ export type TwitterData = {
 };
 
 export function getHandleFromUrl(url: string) {
-  return url.match(/[^\/]+$/g)?.[0] ?? "";
+  return url.match(/[^/]+$/g)?.[0] ?? "";
 }
 
 export function getProfileUrl(url = "") {
@@ -56,7 +55,6 @@ export function getProfileUrl(url = "") {
 
 export async function fetchUserOrCompanyDetails(userName: string) {
   return await makeRequest(
-    // `https://cors-anywhere.herokuapp.com/https://api.twitter.com/2/users/by/username/${userName}`,
     `/api/twitter/details/${userName}`,
     REQUEST_METHOD.GET,
     {

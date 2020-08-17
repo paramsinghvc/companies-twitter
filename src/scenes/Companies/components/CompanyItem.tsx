@@ -1,12 +1,12 @@
-import React, { FC, useCallback, useRef } from "react";
+import React, { useCallback, useRef } from "react";
 import { Grid, Cell, Box } from "@mollycule/lattice";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { ReactComponent as LinkSVG } from "assets/link.svg";
 import { ReactComponent as TwitterSVG } from "assets/twitter.svg";
-import { Company } from "../hooks";
-import Anchor from "../../../shared/components/Anchor";
-import TwitterLink from "../../../shared/components/TwitterLink";
+import Anchor from "shared/components/Anchor";
+import TwitterLink from "shared/components/TwitterLink";
+import { Company } from "shared/types";
 
 const CompanyItem = React.forwardRef<any, { company: Company }>(
   ({ company: { name, url, twitter: twitterUrl } }, ref) => {
@@ -28,7 +28,7 @@ const CompanyItem = React.forwardRef<any, { company: Company }>(
 
         history.push(`/company/${name}`);
       },
-      [history]
+      [history, name]
     );
 
     return (

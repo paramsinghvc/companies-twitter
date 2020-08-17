@@ -2,7 +2,7 @@
 import Koa from "koa";
 import bodyParser from "koa-body";
 import cookieParser from "koa-cookie";
-// import serve from "koa-static";
+import serve from "koa-static";
 import userAgent from "koa-useragent";
 import chalk from "chalk";
 import path from "path";
@@ -44,10 +44,9 @@ app.use(async (ctx, next) => {
 
 /* Adding Middlewares for logging */
 app.use(morganMiddleware);
-// app.use(winstonLoggerMiddleware);
 
 /** Serve React app build folder */
-// app.use(serve(FRONTEND_APP_BUILD_PATH));
+app.use(serve(FRONTEND_APP_BUILD_PATH));
 
 /** Koa Router holding all the api routes, prefixed with /api */
 app.use(apiRouter.routes());
@@ -56,13 +55,13 @@ app.use(apiRouter.routes());
  * Works by catching the unresolved/unmatched routes and redirecting them to
  * index.html of the frontend app to get resolved through client side navigation eg: React-Router
  */
-// app.use(
-//   async (ctx, next) =>
-//     await serve(FRONTEND_APP_BUILD_PATH)(
-//       Object.assign(ctx, { path: "index.html" }),
-//       next
-//     )
-// );
+app.use(
+  async (ctx, next) =>
+    await serve(FRONTEND_APP_BUILD_PATH)(
+      Object.assign(ctx, { path: "index.html" }),
+      next
+    )
+);
 
 const PORT = process.env.PORT || "8082";
 

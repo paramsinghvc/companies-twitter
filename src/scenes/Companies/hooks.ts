@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { makeRequest, REQUEST_METHOD } from "shared/services/fetch.service";
-
-export type Company = {
-  name: string;
-  url: string;
-  twitter?: string;
-};
+import { Company } from "shared/types";
 
 export function useCompanies() {
   const [isLoading, setIsLoading] = useState(true);

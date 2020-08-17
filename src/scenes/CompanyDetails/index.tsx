@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from "react";
+import React, { FC, useMemo } from "react";
 import { Box, Grid, Cell } from "@mollycule/lattice";
 import styled from "styled-components";
 
@@ -34,7 +34,7 @@ const CompanyDetails: FC = () => {
 
   const twitterProfileImage = useMemo(
     () => getProfileUrl(companyData?.twitterData?.profile_image_url),
-    [companyData?.twitterData]
+    [companyData]
   );
 
   return (

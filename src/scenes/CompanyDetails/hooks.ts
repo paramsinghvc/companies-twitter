@@ -1,19 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import { makeRequest, REQUEST_METHOD } from "shared/services/fetch.service";
 import {
   fetchUserOrCompanyDetails,
   getHandleFromUrl,
-  TwitterData,
 } from "shared/services/twitter.service";
-
-export type Company = {
-  name: string;
-  url: string;
-  twitter?: string;
-  twitterData?: TwitterData;
-};
+import { Company } from "shared/types";
 
 export function useCompanyDetails() {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,6 +44,8 @@ export function useCompanyDetails() {
       } = await fetchUserOrCompanyDetails(handle);
       if (twitterResponse) {
         setCompanyData({ ...response, twitterData: twitterResponse.data });
+      } else {
+        console.error(twitterError);
       }
     }
   }
